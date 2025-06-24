@@ -1,6 +1,19 @@
+# ========================================
 # Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# ========================================
+
+# Build products
+build/
+DerivedData/
+
+# Project data
+*.xcodeproj/xcshareddata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcshareddata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
 
 ## User settings
 xcuserdata/
@@ -13,50 +26,69 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
-## Playgrounds
+# ========================================
+# Playgrounds
+# ========================================
+
+*.playground/Contents.swift
+*.playground/timeline.xctimeline
 timeline.xctimeline
 playground.xcworkspace
 
+# ========================================
 # Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-#
-# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-# hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
+# ========================================
 
 .build/
+Package.resolved
+# Packages/
+# Package.pins
+# *.xcodeproj
+# .swiftpm
 
+# ========================================
 # CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+# ========================================
 
+Pods/
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself: https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+
+# ========================================
 # Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+# ========================================
 
 Carthage/Build/
+# Carthage/Checkouts
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
+# ========================================
+# Fastlane
+# ========================================
 
 fastlane/report.xml
 fastlane/Preview.html
+fastlane/screenshots/
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# ========================================
+# Miscellaneous
+# ========================================
+
+.DS_Store
+*.swp
+*~.nib
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.orig
+
+# ========================================
+# IDEs and local settings
+# ========================================
+
+.project
+.idea/
+.vscode/
