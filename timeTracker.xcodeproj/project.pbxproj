@@ -6,30 +6,53 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B7FC439D2E0AE551009F6ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */; };
+		B7FC439E2E0AE551009F6ED9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC439A2E0AE551009F6ED9 /* SceneDelegate.swift */; };
+		B7FC43A02E0AE551009F6ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FC43962E0AE551009F6ED9 /* Assets.xcassets */; };
+		B7FC43A22E0AE551009F6ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7FC43992E0AE551009F6ED9 /* LaunchScreen.storyboard */; };
+		B7FC43B82E0AEB21009F6ED9 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43B42E0AEB21009F6ED9 /* ListPresenter.swift */; };
+		B7FC43B92E0AEB21009F6ED9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43B32E0AEB21009F6ED9 /* ListViewController.swift */; };
+		B7FC43BA2E0AEB21009F6ED9 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43B52E0AEB21009F6ED9 /* ListInteractor.swift */; };
+		B7FC43BB2E0AEB21009F6ED9 /* ListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43B62E0AEB21009F6ED9 /* ListEntity.swift */; };
+		B7FC43BC2E0AEB21009F6ED9 /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43B72E0AEB21009F6ED9 /* ListRouter.swift */; };
+		B7FC43CC2E0AEB89009F6ED9 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43C82E0AEB89009F6ED9 /* DetailPresenter.swift */; };
+		B7FC43CD2E0AEB89009F6ED9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43C72E0AEB89009F6ED9 /* DetailViewController.swift */; };
+		B7FC43CE2E0AEB89009F6ED9 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43CB2E0AEB89009F6ED9 /* DetailRouter.swift */; };
+		B7FC43CF2E0AEB89009F6ED9 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43C92E0AEB89009F6ED9 /* DetailInteractor.swift */; };
+		B7FC43D02E0AEB89009F6ED9 /* DetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43CA2E0AEB89009F6ED9 /* DetailEntity.swift */; };
+		B7FC43D62E0AEB8A009F6ED9 /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43D22E0AEB8A009F6ED9 /* EditPresenter.swift */; };
+		B7FC43D72E0AEB8A009F6ED9 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43D12E0AEB8A009F6ED9 /* EditViewController.swift */; };
+		B7FC43D82E0AEB8A009F6ED9 /* EditInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43D32E0AEB8A009F6ED9 /* EditInteractor.swift */; };
+		B7FC43D92E0AEB8A009F6ED9 /* EditEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43D42E0AEB8A009F6ED9 /* EditEntity.swift */; };
+		B7FC43DA2E0AEB8A009F6ED9 /* EditRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43D52E0AEB8A009F6ED9 /* EditRouter.swift */; };
+		B7FC43DC2E0B21D4009F6ED9 /* DetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43DB2E0B21D4009F6ED9 /* DetailAssembly.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		B7FC43532E0ABE72009F6ED9 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B777F2642E0D5997004DD051 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = timeTracker.app; path = "/Users/dendy/Desktop/folder/dev/timeTracker/build/Debug-iphoneos/timeTracker.app"; sourceTree = "<absolute>"; };
+		B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B7FC43962E0AE551009F6ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7FC43972E0AE551009F6ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7FC43982E0AE551009F6ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B7FC439A2E0AE551009F6ED9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B7FC43B32E0AEB21009F6ED9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B7FC43B42E0AEB21009F6ED9 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		B7FC43B52E0AEB21009F6ED9 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		B7FC43B62E0AEB21009F6ED9 /* ListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntity.swift; sourceTree = "<group>"; };
+		B7FC43B72E0AEB21009F6ED9 /* ListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
+		B7FC43C72E0AEB89009F6ED9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B7FC43C82E0AEB89009F6ED9 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		B7FC43C92E0AEB89009F6ED9 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		B7FC43CA2E0AEB89009F6ED9 /* DetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEntity.swift; sourceTree = "<group>"; };
+		B7FC43CB2E0AEB89009F6ED9 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		B7FC43D12E0AEB8A009F6ED9 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		B7FC43D22E0AEB8A009F6ED9 /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
+		B7FC43D32E0AEB8A009F6ED9 /* EditInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInteractor.swift; sourceTree = "<group>"; };
+		B7FC43D42E0AEB8A009F6ED9 /* EditEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntity.swift; sourceTree = "<group>"; };
+		B7FC43D52E0AEB8A009F6ED9 /* EditRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRouter.swift; sourceTree = "<group>"; };
+		B7FC43DB2E0B21D4009F6ED9 /* DetailAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B7FC43652E0ABE74009F6ED9 /* Exceptions for "timeTracker" folder in "timeTracker" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = B7FC43522E0ABE72009F6ED9 /* timeTracker */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		B7FC43552E0ABE72009F6ED9 /* timeTracker */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				B7FC43652E0ABE74009F6ED9 /* Exceptions for "timeTracker" folder in "timeTracker" target */,
-			);
-			path = timeTracker;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B7FC43502E0ABE72009F6ED9 /* Frameworks */ = {
@@ -45,17 +68,76 @@
 		B7FC434A2E0ABE72009F6ED9 = {
 			isa = PBXGroup;
 			children = (
-				B7FC43552E0ABE72009F6ED9 /* timeTracker */,
-				B7FC43542E0ABE72009F6ED9 /* Products */,
+				B7FC43A32E0AE567009F6ED9 /* App */,
+				B7FC43A42E0AE57C009F6ED9 /* other */,
 			);
 			sourceTree = "<group>";
 		};
-		B7FC43542E0ABE72009F6ED9 /* Products */ = {
+		B7FC43A32E0AE567009F6ED9 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				B7FC43532E0ABE72009F6ED9 /* timeTracker.app */,
+				B7FC43A52E0AE897009F6ED9 /* Modules */,
 			);
-			name = Products;
+			path = App;
+			sourceTree = "<group>";
+		};
+		B7FC43A42E0AE57C009F6ED9 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */,
+				B7FC43962E0AE551009F6ED9 /* Assets.xcassets */,
+				B7FC43972E0AE551009F6ED9 /* Info.plist */,
+				B7FC43992E0AE551009F6ED9 /* LaunchScreen.storyboard */,
+				B7FC439A2E0AE551009F6ED9 /* SceneDelegate.swift */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		B7FC43A52E0AE897009F6ED9 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC43A62E0AE9D0009F6ED9 /* List */,
+				B7FC43A72E0AE9D9009F6ED9 /* Detail */,
+				B7FC43A82E0AE9F3009F6ED9 /* Edit */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B7FC43A62E0AE9D0009F6ED9 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC43B32E0AEB21009F6ED9 /* ListViewController.swift */,
+				B7FC43B42E0AEB21009F6ED9 /* ListPresenter.swift */,
+				B7FC43B52E0AEB21009F6ED9 /* ListInteractor.swift */,
+				B7FC43B72E0AEB21009F6ED9 /* ListRouter.swift */,
+				B7FC43B62E0AEB21009F6ED9 /* ListEntity.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		B7FC43A72E0AE9D9009F6ED9 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC43DB2E0B21D4009F6ED9 /* DetailAssembly.swift */,
+				B7FC43C72E0AEB89009F6ED9 /* DetailViewController.swift */,
+				B7FC43C82E0AEB89009F6ED9 /* DetailPresenter.swift */,
+				B7FC43C92E0AEB89009F6ED9 /* DetailInteractor.swift */,
+				B7FC43CB2E0AEB89009F6ED9 /* DetailRouter.swift */,
+				B7FC43CA2E0AEB89009F6ED9 /* DetailEntity.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B7FC43A82E0AE9F3009F6ED9 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				B7FC43D12E0AEB8A009F6ED9 /* EditViewController.swift */,
+				B7FC43D22E0AEB8A009F6ED9 /* EditPresenter.swift */,
+				B7FC43D32E0AEB8A009F6ED9 /* EditInteractor.swift */,
+				B7FC43D52E0AEB8A009F6ED9 /* EditRouter.swift */,
+				B7FC43D42E0AEB8A009F6ED9 /* EditEntity.swift */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -73,14 +155,11 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				B7FC43552E0ABE72009F6ED9 /* timeTracker */,
-			);
 			name = timeTracker;
 			packageProductDependencies = (
 			);
 			productName = timeTracker;
-			productReference = B7FC43532E0ABE72009F6ED9 /* timeTracker.app */;
+			productReference = B777F2642E0D5997004DD051 /* timeTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +187,7 @@
 			mainGroup = B7FC434A2E0ABE72009F6ED9;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = B7FC43542E0ABE72009F6ED9 /* Products */;
+			productRefGroup = B7FC434A2E0ABE72009F6ED9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -122,6 +201,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FC43A02E0AE551009F6ED9 /* Assets.xcassets in Resources */,
+				B7FC43A22E0AE551009F6ED9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +213,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FC43CC2E0AEB89009F6ED9 /* DetailPresenter.swift in Sources */,
+				B7FC43CD2E0AEB89009F6ED9 /* DetailViewController.swift in Sources */,
+				B7FC43CE2E0AEB89009F6ED9 /* DetailRouter.swift in Sources */,
+				B7FC43CF2E0AEB89009F6ED9 /* DetailInteractor.swift in Sources */,
+				B7FC43DC2E0B21D4009F6ED9 /* DetailAssembly.swift in Sources */,
+				B7FC43D62E0AEB8A009F6ED9 /* EditPresenter.swift in Sources */,
+				B7FC43D72E0AEB8A009F6ED9 /* EditViewController.swift in Sources */,
+				B7FC43D82E0AEB8A009F6ED9 /* EditInteractor.swift in Sources */,
+				B7FC43D92E0AEB8A009F6ED9 /* EditEntity.swift in Sources */,
+				B7FC43DA2E0AEB8A009F6ED9 /* EditRouter.swift in Sources */,
+				B7FC43D02E0AEB89009F6ED9 /* DetailEntity.swift in Sources */,
+				B7FC439D2E0AE551009F6ED9 /* AppDelegate.swift in Sources */,
+				B7FC43B82E0AEB21009F6ED9 /* ListPresenter.swift in Sources */,
+				B7FC43B92E0AEB21009F6ED9 /* ListViewController.swift in Sources */,
+				B7FC43BA2E0AEB21009F6ED9 /* ListInteractor.swift in Sources */,
+				B7FC43BB2E0AEB21009F6ED9 /* ListEntity.swift in Sources */,
+				B7FC43BC2E0AEB21009F6ED9 /* ListRouter.swift in Sources */,
+				B7FC439E2E0AE551009F6ED9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B7FC43992E0AE551009F6ED9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7FC43982E0AE551009F6ED9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B7FC43672E0ABE74009F6ED9 /* Debug */ = {
@@ -147,7 +257,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 33F434SKZR;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = timeTracker/Info.plist;
+				INFOPLIST_FILE = other/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -175,7 +285,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 33F434SKZR;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = timeTracker/Info.plist;
+				INFOPLIST_FILE = other/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
