@@ -6,11 +6,24 @@ protocol DetailPresenterProtocol {
     var interactor: InteractorProtocol! { get set }
     var router: RouterProtocol! { get set }
 }
-
+enum forMainView {
+    case count
+    case name
+    case date
+}
 class DetailViewController: UIViewController {
     
     var presenter: DetailPresenterProtocol!
+    // TODO: - DELETE DATA
+    // MARK: - DATA:
+    var dataForMainView: [forMainView: String] = {
+        let count = "count"
+        let name = "name"
+        let date = "date"
+        return [.count: count, .name: name, .date: date]
+    }()
     
+    // MARK: - PROPERTIES
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .systemBlue
@@ -29,6 +42,12 @@ class DetailViewController: UIViewController {
         let view = UIView()
         return view
     }()
+    var labelsForMainView: [forMainView: UILabel] = {
+        let count = UILabel()
+        let name = UILabel()
+        let date = UILabel()
+        return [.count: count, .name: name, .date: date]
+    }()
     var gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -41,19 +60,25 @@ class DetailViewController: UIViewController {
 //        gradient.needsDisplayOnBoundsChange = true
         return gradient
     }()
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        mainView.layoutIfNeeded()
+        gradient.frame = mainView.bounds
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
-        
         addSubviews()
         setupConstraints()
     }
+    // MARK: - METHODS
     func addSubviews() {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         stackView.addArrangedSubview(mainView)
+        labelsForMainView.forEach { _, label in
+            mainView.addSubview(label)
+        }
         mainView.layer.insertSublayer(gradient, at: 0)
     }
     func setupConstraints() {
@@ -75,15 +100,13 @@ class DetailViewController: UIViewController {
             mainView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        mainView.layoutIfNeeded()
-        gradient.frame = mainView.bounds
-    }
 }
 
 extension DetailViewController: DetailViewProtocol {
     //  Что Presenter вызывает в View
+    func updateValues() {
+        // ...
+    }
 }
 
 @available(iOS 17.0, *)

@@ -3,6 +3,7 @@
 protocol DetailViewProtocol: AnyObject {
     var presenter: DetailPresenterProtocol! { get set }
     //  Что Presenter может вызвать во View
+    func updateValues()
 }
 protocol InteractorProtocol {
     var interactorOutput: InteractorOutput? { get set }
