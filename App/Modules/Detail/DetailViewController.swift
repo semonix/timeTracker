@@ -25,29 +25,23 @@ class DetailViewController: UIViewController {
         stackView.backgroundColor = .systemCyan
         return stackView
     }()
-//    lazy var layer: CAGradientLayer = {
-//        let gradient = CAGradientLayer()
-//        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-//        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-//        
-//        let upperLeftCornerColor = UIColor(red: 107.0/255.0, green: 125.0/255.0, blue: 226.0/255.0, alpha: 1)
-//        let lowerRightCornerColor = UIColor(red: 109.0/255.0, green: 75.0/255.0, blue: 154.0/255.0, alpha: 1)
-//        let colors = [upperLeftCornerColor.cgColor, lowerRightCornerColor.cgColor]
-//        gradient.colors = colors
-//        
-//        
-//        gradient.cornerRadius = 12
-//        return gradient
-//    }()
-    lazy var mainView: UIView = {
+    var mainView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemYellow
-        
-//        self.view.layer.insertSublayer(self.layer, at: 0)
         return view
     }()
+    var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        // sRGB:
+        let upperLeftCornerColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
+        let lowerRightCornerColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
+        let colors = [upperLeftCornerColor.cgColor, lowerRightCornerColor.cgColor]
+        gradient.colors = colors
+//        gradient.needsDisplayOnBoundsChange = true
+        return gradient
+    }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,12 +54,12 @@ class DetailViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         stackView.addArrangedSubview(mainView)
+        mainView.layer.insertSublayer(gradient, at: 0)
     }
     func setupConstraints() {
         [scrollView, stackView, mainView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -73,14 +67,18 @@ class DetailViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 
-            mainView.heightAnchor.constraint(equalToConstant: 700)
+            mainView.heightAnchor.constraint(equalToConstant: 250)
         ])
-//        layer.frame = mainView.bounds
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        mainView.layoutIfNeeded()
+        gradient.frame = mainView.bounds
     }
 }
 
@@ -92,13 +90,3 @@ extension DetailViewController: DetailViewProtocol {
 #Preview {
     UINavigationController(rootViewController: DetailViewController())
 }
-
-//func applyGradient(_ colors: [CGColor], frame: CGRect) {
-//    let gradient = CAGradientLayer()
-//    gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-//    gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
-//    gradient.colors = colors
-//    gradient.frame = frame
-//    gradient.cornerRadius = 12
-//    contentView.layer.insertSublayer(gradient, at: 0)
-//}
