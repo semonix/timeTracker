@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
     var presenter: DetailPresenterProtocol!
     // TODO: - DELETE DATA
     // MARK: - DATA:
-    var dataForMainView: [forMainView: String] = {
+    var upStackLabelsData: [forMainView: String] = {
         let count = "count"
         let name = "name"
         let date = "date"
@@ -24,31 +24,30 @@ class DetailViewController: UIViewController {
     }()
     
     // MARK: - PROPERTIES
-    var scrollView: UIScrollView = {
+    var scroll: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .systemBlue
         return scrollView
     }()
-    var stackView: UIStackView = {
+    var stack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .systemCyan
         return stackView
     }()
-    var mainView: UIView = {
-        let view = UIView()
+    var upStack: UIStackView = {
+        let view = UIStackView()
         return view
     }()
-    var labelsForMainView: [forMainView: UILabel] = {
+    var upStackLabels: [forMainView: UILabel] = {
         let count = UILabel()
         let name = UILabel()
         let date = UILabel()
         return [.count: count, .name: name, .date: date]
     }()
-    var gradient: CAGradientLayer = {
+    var gradient4UpStack: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
@@ -62,8 +61,8 @@ class DetailViewController: UIViewController {
     }()
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mainView.layoutIfNeeded()
-        gradient.frame = mainView.bounds
+        upStack.layoutIfNeeded()
+        gradient4UpStack.frame = upStack.bounds
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,31 +72,33 @@ class DetailViewController: UIViewController {
     }
     // MARK: - METHODS
     func addSubviews() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        stackView.addArrangedSubview(mainView)
-        labelsForMainView.forEach { _, label in
-            mainView.addSubview(label)
+        view.addSubview(scroll)
+        scroll.addSubview(stack)
+        stack.addArrangedSubview(upStack)
+        upStackLabels.forEach { _, label in
+            upStack.addArrangedSubview(label)
         }
-        mainView.layer.insertSublayer(gradient, at: 0)
+        upStack.layer.insertSublayer(gradient4UpStack, at: 0)
+        
+        upStackLabels[.count]
     }
     func setupConstraints() {
-        [scrollView, stackView, mainView].forEach {
+        [scroll, stack, upStack].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scroll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scroll.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stack.topAnchor.constraint(equalTo: scroll.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            stack.widthAnchor.constraint(equalTo: scroll.widthAnchor),
+            stack.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
 
-            mainView.heightAnchor.constraint(equalToConstant: 250)
+            upStack.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
 }
