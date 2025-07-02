@@ -6,48 +6,56 @@ protocol DetailPresenterProtocol {
     var interactor: InteractorProtocol! { get set }
     var router: RouterProtocol! { get set }
 }
-enum forMainView {
-    case count
-    case name
-    case date
-}
+
 class DetailViewController: UIViewController {
     
     var presenter: DetailPresenterProtocol!
     // TODO: - DELETE DATA
     // MARK: - DATA:
-    var upStackLabelsData: [forMainView: String] = {
-        let count = "count"
-        let name = "name"
-        let date = "date"
-        return [.count: count, .name: name, .date: date]
+    let upStackLabelsData: [String] = {
+        let count = "42"
+        let name = "Концерт Metallica"
+        let date = "15 августа 2025"
+        return [count, name, date]
     }()
     
     // MARK: - PROPERTIES
-    var scroll: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = .systemBlue
-        return scrollView
+    let scroll: UIScrollView = {
+        let scroll = UIScrollView()
+        return scroll
     }()
-    var stack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        return stackView
+    let stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 16
+        stack.alignment = .fill
+//        stack.distribution = .equalSpacing
+        return stack
     }()
-    var upStack: UIStackView = {
-        let view = UIStackView()
-        return view
+    // MARK: - UP STACK
+    let upStack: UIStackView = {
+        let upStack = UIStackView()
+        upStack.axis = .vertical
+        upStack.distribution = .fillProportionally
+        upStack.alignment = .center
+        upStack.isLayoutMarginsRelativeArrangement = true
+        upStack.layoutMargins = UIEdgeInsets(top: 24, left: 0, bottom: 36, right: 0)
+        return upStack
     }()
-    var upStackLabels: [forMainView: UILabel] = {
+    let upStackLabels: [UILabel] = {
         let count = UILabel()
         let name = UILabel()
         let date = UILabel()
-        return [.count: count, .name: name, .date: date]
+        [count, name, date].forEach { label in
+            label.textColor = .white
+        }
+        count.font = .systemFont(ofSize: 100, weight: .bold)
+        name.font = .systemFont(ofSize: 28, weight: .bold)
+        date.font = .systemFont(ofSize: 20)
+        date.textColor = .systemGray5
+        return [count, name, date]
     }()
-    var gradient4UpStack: CAGradientLayer = {
+    let gradient4UpStack: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
@@ -59,31 +67,114 @@ class DetailViewController: UIViewController {
 //        gradient.needsDisplayOnBoundsChange = true
         return gradient
     }()
+    // MARK: - MID STACK
+    let midStack: UIStackView = {
+        let midStack = UIStackView()
+        midStack.axis = .vertical
+        midStack.distribution = .fillEqually
+        return midStack
+    }()
+    let midStackUp: UIStackView = {
+        let midStackUp = UIStackView()
+//        midStackUp.backgroundColor = .systemBlue
+        midStackUp.distribution = .fillEqually
+        midStackUp.isLayoutMarginsRelativeArrangement = true
+        midStackUp.layoutMargins = UIEdgeInsets(top: 24, left: 24, bottom: 9, right: 24)
+        midStackUp.spacing = 18
+        return midStackUp
+    }()
+    let midStackUpLabels: [UILabel] = {
+       let label0 = UILabel()
+        let label1 = UILabel()
+        [label0, label1].forEach { label in
+            label.textAlignment = .center
+            label.backgroundColor = .systemGray6
+            label.clipsToBounds = true
+            label.layer.cornerRadius = 16
+        }
+        return [label0, label1]
+    }()
+    let midStackDown: UIStackView = {
+        let midStackDown = UIStackView()
+//        midStackDown.backgroundColor = .blue
+        midStackDown.distribution = .fillEqually
+        midStackDown.isLayoutMarginsRelativeArrangement = true
+        midStackDown.layoutMargins = UIEdgeInsets(top: 9, left: 24, bottom: 24, right: 24)
+        midStackDown.spacing = 18
+        return midStackDown
+    }()
+    let midStackDownLabels: [UILabel] = {
+       let label0 = UILabel()
+        let label1 = UILabel()
+        [label0, label1].forEach { label in
+            label.textAlignment = .center
+            label.backgroundColor = .systemGray6
+            label.clipsToBounds = true
+            label.layer.cornerRadius = 16
+        }
+        return [label0, label1]
+    }()
+    // MARK: - DOWN VIEW
+    let downView: UIView = {
+        let downView = UIView()
+        downView.backgroundColor = .systemOrange
+        return downView
+    }()
+    let downViewStack: UIStackView = {
+        let downViewStack = UIStackView()
+        downViewStack.backgroundColor = .black
+//        downViewStack.distribution = .fillProportionally
+        return downViewStack
+    }()
+    let downViewStackLabels: [UILabel] = {
+        let label0 = UILabel()
+        let label1 = UILabel()
+        return [label0, label1]
+    }()
+    let downViewProgress: UIProgressView = {
+        let downViewProgress = UIProgressView()
+        downViewProgress.backgroundColor = .black
+        return downViewProgress
+    }()
+    // MARK: - VIEW DID LOAD
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubviews()
+        setupConstraints()
+        setValues() // TODO: - DELETE
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         upStack.layoutIfNeeded()
         gradient4UpStack.frame = upStack.bounds
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        addSubviews()
-        setupConstraints()
     }
     // MARK: - METHODS
     func addSubviews() {
         view.addSubview(scroll)
         scroll.addSubview(stack)
         stack.addArrangedSubview(upStack)
-        upStackLabels.forEach { _, label in
-            upStack.addArrangedSubview(label)
-        }
-        upStack.layer.insertSublayer(gradient4UpStack, at: 0)
+        stack.addArrangedSubview(midStack)
+        stack.addArrangedSubview(downView)
         
-        upStackLabels[.count]
+        upStack.layer.insertSublayer(gradient4UpStack, at: 0)
+        upStack.addArrangedSubview(upStackLabels[0])
+        upStack.addArrangedSubview(upStackLabels[1])
+        upStack.addArrangedSubview(upStackLabels[2])
+        
+        midStack.addArrangedSubview(midStackUp)
+        midStack.addArrangedSubview(midStackDown)
+        midStackUp.addArrangedSubview(midStackUpLabels[0])
+        midStackUp.addArrangedSubview(midStackUpLabels[1])
+        midStackDown.addArrangedSubview(midStackDownLabels[0])
+        midStackDown.addArrangedSubview(midStackDownLabels[1])
+        
+        downView.addSubview(downViewStack)
+        downView.addSubview(downViewProgress)
+        downViewStack.addArrangedSubview(downViewStackLabels[0])
+        downViewStack.addArrangedSubview(downViewStackLabels[1])
     }
     func setupConstraints() {
-        [scroll, stack, upStack].forEach {
+        [scroll, stack, upStack, midStack, downView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         NSLayoutConstraint.activate([
@@ -98,8 +189,50 @@ class DetailViewController: UIViewController {
             stack.widthAnchor.constraint(equalTo: scroll.widthAnchor),
             stack.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
 
-            upStack.heightAnchor.constraint(equalToConstant: 250)
+            upStack.heightAnchor.constraint(equalToConstant: 250),
+            midStack.heightAnchor.constraint(equalToConstant: 250),
+            downView.heightAnchor.constraint(equalToConstant: 250)
         ])
+    }
+    func setValues() {
+        setValues4UpStackLabels()
+        setValues4MidStackLabels()
+        setValues4DownViewStackLabels()
+        
+        func setValues4UpStackLabels() {
+            for i in 0...2 {
+                upStackLabels[i].text = upStackLabelsData[i]
+            }
+        }
+        func setValues4MidStackLabels() {
+            let midStackLabels = [midStackUpLabels[0], midStackUpLabels[1], midStackDownLabels[0], midStackDownLabels[1]]
+            midStackLabels.forEach { $0.numberOfLines = 0 }
+            midStackUpLabels[0].attributedText = makeTwoLineAttributedText(title: "6\n", subtitle: "недель")
+            midStackUpLabels[1].attributedText = makeTwoLineAttributedText(title: "1.4\n", subtitle: "месяца")
+            midStackDownLabels[0].attributedText = makeTwoLineAttributedText(title: "1008\n", subtitle: "часов")
+            midStackDownLabels[1].attributedText = makeTwoLineAttributedText(title: "60480\n", subtitle: "минут")
+            
+            func makeTwoLineAttributedText(title: String, subtitle: String) -> NSMutableAttributedString {
+                
+                let attributedText = NSMutableAttributedString(string: title + subtitle)
+                // Настраваем первую строку
+                attributedText.addAttributes([
+                    .font: UIFont.boldSystemFont(ofSize: 24),
+                    .foregroundColor: UIColor.label
+                ], range: NSRange(location: 0, length: title.count))
+                // Настраваем вторую строку
+                attributedText.addAttributes([
+                    .font: UIFont.boldSystemFont(ofSize: 16),
+                    .foregroundColor: UIColor.gray
+                ], range: NSRange(location: title.count, length: subtitle.count))
+                
+                return attributedText
+            }
+        }
+        func setValues4DownViewStackLabels() {
+            print(123)
+            downViewStackLabels[0].text = "Прогресс ожидания"
+        }
     }
 }
 

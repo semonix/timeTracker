@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B79AF0AC2E11E0C4008F1375 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = timeTracker.app; path = "/Users/dendy/Desktop/folder/dev/timeTracker/build/Debug-iphoneos/timeTracker.app"; sourceTree = "<absolute>"; };
+		B71EFC552E1531310053C7D9 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = timeTracker.app; path = "/Users/dendy/Desktop/folder/dev/timeTracker/build/Debug-iphoneos/timeTracker.app"; sourceTree = "<absolute>"; };
 		B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7FC43962E0AE551009F6ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7FC43972E0AE551009F6ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 			packageProductDependencies = (
 			);
 			productName = timeTracker;
-			productReference = B79AF0AC2E11E0C4008F1375 /* timeTracker.app */;
+			productReference = B71EFC552E1531310053C7D9 /* timeTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
