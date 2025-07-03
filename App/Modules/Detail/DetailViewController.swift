@@ -126,7 +126,6 @@ class DetailViewController: UIViewController {
     let downViewStack: UIStackView = {
         let downViewStack = UIStackView()
 //        downViewStack.backgroundColor = .black
-//        downViewStack.distribution = .fillProportionally
         return downViewStack
     }()
     let downViewStackLabels: [UILabel] = {
@@ -199,7 +198,7 @@ class DetailViewController: UIViewController {
             stack.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
             stack.widthAnchor.constraint(equalTo: scroll.widthAnchor),
-//            stack.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            stack.bottomAnchor.constraint(greaterThanOrEqualTo: scroll.bottomAnchor),
             stack.heightAnchor.constraint(greaterThanOrEqualTo: scroll.heightAnchor),
 
             upStack.heightAnchor.constraint(equalToConstant: 250),
@@ -207,12 +206,12 @@ class DetailViewController: UIViewController {
             downView.heightAnchor.constraint(equalToConstant: 110),
             
             downViewStack.heightAnchor.constraint(equalToConstant: 60),
-            downViewStack.leadingAnchor.constraint(equalTo: downView.leadingAnchor, constant: 16),
-            downViewStack.trailingAnchor.constraint(equalTo: downView.trailingAnchor, constant: -16),
+            downViewStack.leadingAnchor.constraint(equalTo: downView.leadingAnchor, constant: 24),
+            downViewStack.trailingAnchor.constraint(equalTo: downView.trailingAnchor, constant: -24),
             
             downViewProgress.topAnchor.constraint(equalTo: downViewStack.bottomAnchor, constant: 8),
-            downViewProgress.leadingAnchor.constraint(equalTo: downView.leadingAnchor, constant: 16),
-            downViewProgress.trailingAnchor.constraint(equalTo: downView.trailingAnchor, constant: -16)
+            downViewProgress.leadingAnchor.constraint(equalTo: downView.leadingAnchor, constant: 24),
+            downViewProgress.trailingAnchor.constraint(equalTo: downView.trailingAnchor, constant: -24)
         ])
     }
     func setValues() {
