@@ -27,10 +27,9 @@ class DetailViewController: UIViewController {
     let stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 16
+//        stack.spacing = 16
         stack.alignment = .fill
         stack.distribution = .equalSpacing
-//                stack.distribution = .fill
         return stack
     }()
     // MARK: - UP STACK
@@ -75,7 +74,7 @@ class DetailViewController: UIViewController {
 //        midStack.backgroundColor = .systemRed
         midStack.distribution = .fillEqually
         midStack.isLayoutMarginsRelativeArrangement = true
-        midStack.layoutMargins = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+        midStack.layoutMargins = UIEdgeInsets(top: 24, left: 24, bottom: 12, right: 24)
         return midStack
     }()
     let midStackUp: UIStackView = {
@@ -185,6 +184,7 @@ class DetailViewController: UIViewController {
         downViewStack.addArrangedSubview(downViewStackLabels[0])
         downViewStack.addArrangedSubview(downViewStackLabels[1])
     }
+    // MARK: - CONSTRAINTS
     func setupConstraints() {
         [scroll, stack, upStack, midStack, downView, downViewStack, downViewProgress].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -199,11 +199,12 @@ class DetailViewController: UIViewController {
             stack.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
             stack.widthAnchor.constraint(equalTo: scroll.widthAnchor),
-            stack.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+//            stack.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            stack.heightAnchor.constraint(greaterThanOrEqualTo: scroll.heightAnchor),
 
             upStack.heightAnchor.constraint(equalToConstant: 250),
             midStack.heightAnchor.constraint(equalToConstant: 230),
-            downView.heightAnchor.constraint(equalToConstant: 80),
+            downView.heightAnchor.constraint(equalToConstant: 110),
             
             downViewStack.heightAnchor.constraint(equalToConstant: 60),
             downViewStack.leadingAnchor.constraint(equalTo: downView.leadingAnchor, constant: 16),
