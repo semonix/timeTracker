@@ -256,6 +256,33 @@ class DetailViewController: UIViewController {
         }
     }
 }
+// MARK: - GRADIENT VIEW
+class GradientView: UIView {
+    private lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        // sRGB:
+        let upperLeftCornerColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
+        let lowerRightCornerColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
+        let colors = [upperLeftCornerColor.cgColor, lowerRightCornerColor.cgColor]
+        gradient.colors = colors
+//        gradient.needsDisplayOnBoundsChange = true
+        layer.insertSublayer(gradient, at: 0)
+
+        return gradient
+    }()
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        layoutIfNeeded()
+////        gradient4UpStack.frame = upStack.bounds
+//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutIfNeeded()
+        gradient.frame = bounds
+    }
+}
 
 extension DetailViewController: DetailViewProtocol {
     //  Что Presenter вызывает в View
