@@ -33,8 +33,8 @@ class DetailViewController: UIViewController {
         return stack
     }()
     // MARK: - UP STACK
-    let upStack: UIStackView = {
-        let upStack = UIStackView()
+    let upStack: GradientStackView = {
+        let upStack = GradientStackView(withDirection: .topLeftToBottomRight)
         upStack.axis = .vertical
         upStack.distribution = .fillProportionally
         upStack.alignment = .center
@@ -55,18 +55,18 @@ class DetailViewController: UIViewController {
         date.textColor = .systemGray5
         return [count, name, date]
     }()
-    let gradient4UpStack: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-        // sRGB:
-        let upperLeftCornerColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
-        let lowerRightCornerColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
-        let colors = [upperLeftCornerColor.cgColor, lowerRightCornerColor.cgColor]
-        gradient.colors = colors
-//        gradient.needsDisplayOnBoundsChange = true
-        return gradient
-    }()
+//    let gradient4UpStack: CAGradientLayer = {
+//        let gradient = CAGradientLayer()
+//        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+//        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+//        // sRGB:
+//        let upperLeftCornerColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
+//        let lowerRightCornerColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
+//        let colors = [upperLeftCornerColor.cgColor, lowerRightCornerColor.cgColor]
+//        gradient.colors = colors
+////        gradient.needsDisplayOnBoundsChange = true
+//        return gradient
+//    }()
     // MARK: - MID STACK
     let midStack: UIStackView = {
         let midStack = UIStackView()
@@ -152,11 +152,21 @@ class DetailViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setValues() // TODO: - DELETE
+        
+        
+        Task {
+            try? await Task.sleep(nanoseconds: 3_000_000_000) // 3 секунды
+            print("Прошло 3 секунды, запускаем задачу")
+            await changeColorOfGradient()
+        }
+    }
+    func changeColorOfGradient() async {
+        upStack.changeDirectionOn(.bottomLeftToTopRight)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         upStack.layoutIfNeeded()
-        gradient4UpStack.frame = upStack.bounds
+//        gradient4UpStack.frame = upStack.bounds
     }
     // MARK: - METHODS
     func addSubviews() {
@@ -166,7 +176,7 @@ class DetailViewController: UIViewController {
         stack.addArrangedSubview(midStack)
         stack.addArrangedSubview(downView)
         
-        upStack.layer.insertSublayer(gradient4UpStack, at: 0)
+//        upStack.layer.insertSublayer(gradient4UpStack, at: 0)
         upStack.addArrangedSubview(upStackLabels[0])
         upStack.addArrangedSubview(upStackLabels[1])
         upStack.addArrangedSubview(upStackLabels[2])
@@ -272,15 +282,84 @@ class GradientView: UIView {
 
         return gradient
     }()
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        layoutIfNeeded()
-////        gradient4UpStack.frame = upStack.bounds
-//    }
     override func layoutSubviews() {
         super.layoutSubviews()
-        layoutIfNeeded()
+//        layoutIfNeeded()
         gradient.frame = bounds
+    }
+}
+// MARK: - GRADIENT VIEW STACK
+class GradientStackView: UIStackView {
+    enum Direction {
+        case leftToRight
+        case topToBottom
+        case topLeftToBottomRight
+        case bottomLeftToTopRight
+        
+        var points: (start: CGPoint, end: CGPoint) {
+            switch self {
+            case .leftToRight:
+                (start: CGPoint(x: 0.0, y: 0.5), end: CGPoint(x: 1.0, y: 0.5))
+            case .topToBottom:
+                (start: CGPoint(x: 0.5, y: 0.0), end: CGPoint(x: 0.5, y: 1.0))
+            case .topLeftToBottomRight:
+                (start: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: 1.0, y: 1.0))
+            case .bottomLeftToTopRight:
+                (start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.0))
+            }
+        }
+    }
+    private let gradient = CAGradientLayer()
+    
+    private var startPoint: CGPoint {
+        didSet {
+            gradient.startPoint = startPoint
+        }
+    }
+    private var endPoint: CGPoint {
+        didSet {
+            gradient.endPoint = endPoint
+        }
+    }
+    // sRGB:
+    private var startColor: UIColor  {
+        didSet {
+            gradient.colors = [startColor.cgColor, endColor.cgColor]
+        }
+    }
+    private var endColor: UIColor {
+        didSet {
+            gradient.colors = [startColor.cgColor, endColor.cgColor]
+        }
+    }
+    func changeDirectionOn(_ direction: Direction) {
+        startPoint = direction.points.start
+        endPoint = direction.points.end
+    }
+    func changeColor(startWithSRGBcolor startColor: UIColor, endWithSRGBcolor endColor: UIColor) {
+        self.startColor = startColor
+        self.endColor = endColor
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradient.frame = bounds
+    }
+    init(withDirection direction: Direction = .leftToRight) {
+        startPoint = direction.points.start
+        endPoint = direction.points.end
+        
+        startColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
+        endColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
+        
+        super.init(frame: .zero)
+        setup()
+    }
+    func setup() {
+        gradient.colors = [startColor.cgColor, endColor.cgColor]
+        layer.insertSublayer(gradient, at: 0)
+    }
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
