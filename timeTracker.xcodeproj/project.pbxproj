@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B77A2A522E196BC200B19ED2 /* GradientViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77A2A512E196BC200B19ED2 /* GradientViews.swift */; };
 		B7FC439D2E0AE551009F6ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */; };
 		B7FC439E2E0AE551009F6ED9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC439A2E0AE551009F6ED9 /* SceneDelegate.swift */; };
 		B7FC43A02E0AE551009F6ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FC43962E0AE551009F6ED9 /* Assets.xcassets */; };
@@ -30,7 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B777F2642E0D5997004DD051 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = timeTracker.app; path = "/Users/dendy/Desktop/folder/dev/timeTracker/build/Debug-iphoneos/timeTracker.app"; sourceTree = "<absolute>"; };
+		B716C7E02E15314A00840300 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77A2A512E196BC200B19ED2 /* GradientViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViews.swift; sourceTree = "<group>"; };
 		B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7FC43962E0AE551009F6ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7FC43972E0AE551009F6ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				B7FC43A32E0AE567009F6ED9 /* App */,
 				B7FC43A42E0AE57C009F6ED9 /* other */,
+				B716C7E02E15314A00840300 /* timeTracker.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +127,7 @@
 				B7FC43C92E0AEB89009F6ED9 /* DetailInteractor.swift */,
 				B7FC43CB2E0AEB89009F6ED9 /* DetailRouter.swift */,
 				B7FC43CA2E0AEB89009F6ED9 /* DetailEntity.swift */,
+				B77A2A512E196BC200B19ED2 /* GradientViews.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -158,8 +162,8 @@
 			name = timeTracker;
 			packageProductDependencies = (
 			);
-			productName = timeTracker;
-			productReference = B777F2642E0D5997004DD051 /* timeTracker.app */;
+		productName = timeTracker;
+			productReference = B716C7E02E15314A00840300 /* timeTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -228,6 +232,7 @@
 				B7FC43B82E0AEB21009F6ED9 /* ListPresenter.swift in Sources */,
 				B7FC43B92E0AEB21009F6ED9 /* ListViewController.swift in Sources */,
 				B7FC43BA2E0AEB21009F6ED9 /* ListInteractor.swift in Sources */,
+				B77A2A522E196BC200B19ED2 /* GradientViews.swift in Sources */,
 				B7FC43BB2E0AEB21009F6ED9 /* ListEntity.swift in Sources */,
 				B7FC43BC2E0AEB21009F6ED9 /* ListRouter.swift in Sources */,
 				B7FC439E2E0AE551009F6ED9 /* SceneDelegate.swift in Sources */,
@@ -260,8 +265,8 @@
 				INFOPLIST_FILE = other/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -288,8 +293,8 @@
 				INFOPLIST_FILE = other/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
