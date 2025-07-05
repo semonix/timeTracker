@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
     }()
     // MARK: - UP STACK
     let upStack: GradientStackView = {
-        let upStack = GradientStackView(withDirection: .topLeftToBottomRight)
+        let upStack = GradientStackView()
         upStack.axis = .vertical
         upStack.distribution = .fillProportionally
         upStack.alignment = .center
@@ -55,18 +55,6 @@ class DetailViewController: UIViewController {
         date.textColor = .systemGray5
         return [count, name, date]
     }()
-//    let gradient4UpStack: CAGradientLayer = {
-//        let gradient = CAGradientLayer()
-//        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-//        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-//        // sRGB:
-//        let upperLeftCornerColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
-//        let lowerRightCornerColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
-//        let colors = [upperLeftCornerColor.cgColor, lowerRightCornerColor.cgColor]
-//        gradient.colors = colors
-////        gradient.needsDisplayOnBoundsChange = true
-//        return gradient
-//    }()
     // MARK: - MID STACK
     let midStack: UIStackView = {
         let midStack = UIStackView()
@@ -152,12 +140,6 @@ class DetailViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setValues() // TODO: - DELETE
-        
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        upStack.layoutIfNeeded()
-//        gradient4UpStack.frame = upStack.bounds
     }
     // MARK: - METHODS
     func addSubviews() {
@@ -255,96 +237,6 @@ class DetailViewController: UIViewController {
             downViewStackLabels[1].text = "65%"
             downViewProgress.progress = 0.65
         }
-    }
-}
-// MARK: - GRADIENT VIEW
-class GradientView: UIView {
-    enum Direction {
-        case leftToRight
-        case topToBottom
-        case topLeftToBottomRight
-        case bottomLeftToTopRight
-        
-        var points: (start: CGPoint, end: CGPoint) {
-            switch self {
-            case .leftToRight:
-                (start: CGPoint(x: 0.0, y: 0.5), end: CGPoint(x: 1.0, y: 0.5))
-            case .topToBottom:
-                (start: CGPoint(x: 0.5, y: 0.0), end: CGPoint(x: 0.5, y: 1.0))
-            case .topLeftToBottomRight:
-                (start: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: 1.0, y: 1.0))
-            case .bottomLeftToTopRight:
-                (start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.0))
-            }
-        }
-    }
-    private let gradient = CAGradientLayer()
-    init(withDirection direction: Direction = .leftToRight) {
-        super.init(frame: .zero)
-        changeDirection(direction)
-        let startColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
-        let endColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
-        changeColor(startWithSRGBcolor: startColor, endWithSRGBcolor: endColor)
-        layer.insertSublayer(gradient, at: 0)
-    }
-    func changeDirection(_ direction: Direction) {
-        gradient.startPoint = direction.points.start
-        gradient.endPoint = direction.points.end
-    }
-    func changeColor(startWithSRGBcolor startColor: UIColor, endWithSRGBcolor endColor: UIColor) {
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradient.frame = bounds
-    }
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-// MARK: - GRADIENT STACK VIEW
-class GradientStackView: UIStackView {
-    enum Direction {
-        case leftToRight
-        case topToBottom
-        case topLeftToBottomRight
-        case bottomLeftToTopRight
-        
-        var points: (start: CGPoint, end: CGPoint) {
-            switch self {
-            case .leftToRight:
-                (start: CGPoint(x: 0.0, y: 0.5), end: CGPoint(x: 1.0, y: 0.5))
-            case .topToBottom:
-                (start: CGPoint(x: 0.5, y: 0.0), end: CGPoint(x: 0.5, y: 1.0))
-            case .topLeftToBottomRight:
-                (start: CGPoint(x: 0.0, y: 0.0), end: CGPoint(x: 1.0, y: 1.0))
-            case .bottomLeftToTopRight:
-                (start: CGPoint(x: 0.0, y: 1.0), end: CGPoint(x: 1.0, y: 0.0))
-            }
-        }
-    }
-    private let gradient = CAGradientLayer()
-    init(withDirection direction: Direction = .leftToRight) {
-        super.init(frame: .zero)
-        changeDirection(direction)
-        let startColor = UIColor(red: 103.0/255.0, green: 127.0/255.0, blue: 235.0/255.0, alpha: 1)
-        let endColor = UIColor(red: 116.0/255.0, green: 73.0/255.0, blue: 160.0/255.0, alpha: 1)
-        changeColor(startWithSRGBcolor: startColor, endWithSRGBcolor: endColor)
-        layer.insertSublayer(gradient, at: 0)
-    }
-    func changeDirection(_ direction: Direction) {
-        gradient.startPoint = direction.points.start
-        gradient.endPoint = direction.points.end
-    }
-    func changeColor(startWithSRGBcolor startColor: UIColor, endWithSRGBcolor endColor: UIColor) {
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradient.frame = bounds
-    }
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 extension DetailViewController: DetailViewProtocol {
