@@ -13,8 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let detailModule = DetailAssembly.createModule()
-        let navigationController = UINavigationController(rootViewController: detailModule)
+//        let detailModule = DetailAssembly.createModule()
+//        let navigationController = UINavigationController(rootViewController: detailModule)
+        
+        let listModule = ListAssembly.createModule()
+        let navigationController = UINavigationController(rootViewController: listModule)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

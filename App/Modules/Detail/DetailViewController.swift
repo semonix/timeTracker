@@ -3,8 +3,8 @@ import UIKit
 protocol DetailPresenterProtocol {
     //  Что View вызывает в Presenter
     var view: DetailViewProtocol? { get set }
-    var interactor: InteractorProtocol! { get set }
-    var router: RouterProtocol! { get set }
+    var interactor: DetailInteractorProtocol! { get set }
+    var router: DetailRouterProtocol! { get set }
 }
 
 class DetailViewController: UIViewController {

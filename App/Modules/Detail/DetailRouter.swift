@@ -3,6 +3,6 @@ import Foundation
 class DetailRouter {
     weak var view: DetailViewController?
 }
-extension DetailRouter: RouterProtocol {
+extension DetailRouter: DetailRouterProtocol {
     //  Что Presenter вызывает в Router
 }
