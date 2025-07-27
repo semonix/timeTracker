@@ -55,15 +55,15 @@ class ListViewController: UIViewController {
  
         let item = NSCollectionLayoutItem(layoutSize: .init(
             widthDimension: .fractionalWidth(1),
-//            heightDimension: .estimated(250)))
-            heightDimension: .absolute(210)))
+            heightDimension: .estimated(210)))
         item.contentInsets = .init(top: 0, leading: 16, bottom: 24, trailing: 16)
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
             widthDimension: .fractionalWidth(1), heightDimension: .estimated(250)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 8, bottom: 8, trailing: 8)
+        section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+        section.interGroupSpacing = 20
         
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -186,6 +186,7 @@ class GradientViewCell: UICollectionViewCell, GradientProtocol {
         let label = UILabel()
         label.font = .systemFont(ofSize: 26, weight: .bold)
         label.textColor = .systemBackground
+        label.numberOfLines = 0
         return label
     }()
     private func setupCell() {
@@ -202,19 +203,18 @@ class GradientViewCell: UICollectionViewCell, GradientProtocol {
         }
         // MARK: - LAYOUT OF CELL
         NSLayoutConstraint.activate([
-            counterLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
+            counterLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             counterLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            counterLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 24),
+            counterLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             
             minorLabel.topAnchor.constraint(equalTo: counterLabel.bottomAnchor, constant: -6),
             minorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            minorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 24),
-//            minorLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+            minorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             
             nameOfEventLabel.topAnchor.constraint(equalTo: minorLabel.bottomAnchor, constant: 8),
             nameOfEventLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            nameOfEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 24),
-//            nameOfEventLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
+            nameOfEventLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            nameOfEventLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -18)
         ])
     }
     func configure(with item: ItemData) {
