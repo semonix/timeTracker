@@ -56,31 +56,38 @@ class ListViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: .init(
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(210)))
-        item.contentInsets = .init(top: 0, leading: 16, bottom: 24, trailing: 16)
+        item.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(
             widthDimension: .fractionalWidth(1), heightDimension: .estimated(250)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+        section.contentInsets = .init(top: 8, leading: 8, bottom: 0, trailing: 8)
         section.interGroupSpacing = 20
         
         return UICollectionViewCompositionalLayout(section: section)
     }
     private var itemsData: [ItemData] = []
     
+    // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
-        
-        title = "Счётчики"
-        navigationController?.navigationBar.prefersLargeTitles = true
+
+        setupNavigationBar()
+        setupCollectionView()
+        loadMockData()
+    }
+    private func setupNavigationBar() {
+        let titleLabel = UILabel()
+        titleLabel.text = "  Счётчики"
+        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
             action: #selector(addButtonTapped)
         )
-        setupCollectionView()
-        loadMockData()
     }
     
     // MARK: - ACTIONS
@@ -115,7 +122,6 @@ class ListViewController: UIViewController {
 // MARK: - DATA SOURCE
 extension ListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(itemsData.count)
         return itemsData.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
