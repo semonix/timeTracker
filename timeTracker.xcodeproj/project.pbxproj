@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -185,6 +185,7 @@
 				};
 			};
 			buildConfigurationList = B7FC434E2E0ABE72009F6ED9 /* Build configuration list for PBXProject "timeTracker" */;
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -193,7 +194,6 @@
 			);
 			mainGroup = B7FC434A2E0ABE72009F6ED9;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = B7FC434A2E0ABE72009F6ED9;
 			projectDirPath = "";
 			projectRoot = "";
