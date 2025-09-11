@@ -78,16 +78,30 @@ class ListViewController: UIViewController {
         loadMockData()
     }
     private func setupNavigationBar() {
-        let titleLabel = UILabel()
-        titleLabel.text = "  Счётчики"
-        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
+//        let titleLabel = UILabel()
+//        titleLabel.text = "  Счётчики"
+//        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
+        navigationItem.title = "Счётчики"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let rightButtonImage = UIImage(systemName: "plus.circle.fill")
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
+            image: rightButtonImage,
+            style: .plain,
             target: self,
             action: #selector(addButtonTapped)
         )
+        
+//        let addButton = UIButton(type: .system)
+//        let addButtonImage = UIImage(systemName: "plus")//?.withRenderingMode(.alwaysTemplate)
+//        addButton.setImage(addButtonImage, for: .normal)
+//        addButton.tintColor = .white
+//        addButton.backgroundColor = .systemPurple.withAlphaComponent(0.7)
+//        addButton.layer.cornerRadius = 12
+//        addButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+//        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
     }
     
     // MARK: - ACTIONS
