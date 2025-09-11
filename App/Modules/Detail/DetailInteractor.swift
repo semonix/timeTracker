@@ -1,13 +1,13 @@
 import Foundation
 
-protocol InteractorOutput: AnyObject {
+protocol DetailInteractorOutput: AnyObject {
     //  Что Interactor вызывает в Presenter
 }
 
 class DetailInteractor {
-    weak var interactorOutput: InteractorOutput?
+    weak var interactorOutput: DetailInteractorOutput?
 }
 
-extension DetailInteractor: InteractorProtocol {
+extension DetailInteractor: DetailInteractorProtocol {
     //  Что Presenter может вызвать в Interactor
 }
