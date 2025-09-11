@@ -5,11 +5,11 @@ protocol DetailViewProtocol: AnyObject {
     //  Что Presenter может вызвать во View
     func updateValues()
 }
-protocol InteractorProtocol {
-    var interactorOutput: InteractorOutput? { get set }
+protocol DetailInteractorProtocol {
+    var interactorOutput: DetailInteractorOutput? { get set }
     //  Что Presenter может вызвать в Interactor
 }
-protocol RouterProtocol {
+protocol DetailRouterProtocol {
     // TODO: Проверить необходимость:
 //    var view: DetailViewController? { get set }
     
@@ -18,10 +18,10 @@ protocol RouterProtocol {
 
 class DetailPresenter {
     weak var view: DetailViewProtocol?
-    var interactor: InteractorProtocol!
-    var router: RouterProtocol!
+    var interactor: DetailInteractorProtocol!
+    var router: DetailRouterProtocol!
     
-    init(view: DetailViewProtocol?, interactor: InteractorProtocol,router: RouterProtocol) {
+    init(view: DetailViewProtocol?, interactor: DetailInteractorProtocol,router: DetailRouterProtocol) {
         self.view = view
         self.interactor = interactor
         self.router = router
@@ -31,6 +31,6 @@ class DetailPresenter {
 extension DetailPresenter: DetailPresenterProtocol {
     //  Что View вызывает в Presenter
 }
-extension DetailPresenter: InteractorOutput {
+extension DetailPresenter: DetailInteractorOutput {
     //  Что Interactor вызывает в Presenter
 }
