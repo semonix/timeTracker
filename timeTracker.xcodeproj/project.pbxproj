@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B766B3062E755B9100AA0E79 /* EditAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B766B3052E755B9100AA0E79 /* EditAssembly.swift */; };
 		B77A2A522E196BC200B19ED2 /* GradientViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77A2A512E196BC200B19ED2 /* GradientViews.swift */; };
 		B77A2A562E1AA12200B19ED2 /* ListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77A2A552E1AA12200B19ED2 /* ListAssembly.swift */; };
 		B7FC439D2E0AE551009F6ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		B716C7E02E15314A00840300 /* timeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B766B3052E755B9100AA0E79 /* EditAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAssembly.swift; sourceTree = "<group>"; };
 		B77A2A512E196BC200B19ED2 /* GradientViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViews.swift; sourceTree = "<group>"; };
 		B77A2A552E1AA12200B19ED2 /* ListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAssembly.swift; sourceTree = "<group>"; };
 		B7FC43952E0AE551009F6ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		B7FC43A82E0AE9F3009F6ED9 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				B766B3052E755B9100AA0E79 /* EditAssembly.swift */,
 				B7FC43D12E0AEB8A009F6ED9 /* EditViewController.swift */,
 				B7FC43D22E0AEB8A009F6ED9 /* EditPresenter.swift */,
 				B7FC43D32E0AEB8A009F6ED9 /* EditInteractor.swift */,
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7FC43CC2E0AEB89009F6ED9 /* DetailPresenter.swift in Sources */,
+				B766B3062E755B9100AA0E79 /* EditAssembly.swift in Sources */,
 				B7FC43CD2E0AEB89009F6ED9 /* DetailViewController.swift in Sources */,
 				B7FC43CE2E0AEB89009F6ED9 /* DetailRouter.swift in Sources */,
 				B7FC43CF2E0AEB89009F6ED9 /* DetailInteractor.swift in Sources */,
