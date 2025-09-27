@@ -180,8 +180,9 @@ class DetailViewController: UIViewController {
             stack.topAnchor.constraint(equalTo: scroll.topAnchor),
             stack.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
-            stack.widthAnchor.constraint(equalTo: scroll.widthAnchor),
             stack.bottomAnchor.constraint(greaterThanOrEqualTo: scroll.bottomAnchor),
+            
+            stack.widthAnchor.constraint(equalTo: scroll.widthAnchor),
             stack.heightAnchor.constraint(greaterThanOrEqualTo: scroll.heightAnchor),
 
             upStack.heightAnchor.constraint(equalToConstant: 250),

@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let detailModule = DetailAssembly.createModule()
 //        let navigationController = UINavigationController(rootViewController: detailModule)
         
-        let listModule = ListAssembly.createModule()
+//        let listModule = ListAssembly.createModule()
+        let listModule = EditAssembly.createModule()
+        
         let navigationController = UINavigationController(rootViewController: listModule)
         
         window?.rootViewController = navigationController
