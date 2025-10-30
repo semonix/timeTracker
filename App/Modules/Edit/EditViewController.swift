@@ -16,14 +16,13 @@ class EditViewController: UIViewController {
     let stackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-//        stackView.spacing = 16
-        stackView.alignment = .fill
+//        stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         return stackView
     }()
-        let flexibleSpacer1 = {
-            let flexibleSpacer1 = UIView()
-            return flexibleSpacer1
+        let spacer1 = {
+            let spacer1 = UIView()
+            return spacer1
         }()
     
         let eventNameView = {
@@ -40,32 +39,31 @@ class EditViewController: UIViewController {
                 return eventNameTextField
             }()
     
-        let flexibleSpacer2 = {
-            let flexibleSpacer2 = UIView()
-            return flexibleSpacer2
-        }()
-        
-        let eventDateView = {
-            let eventDateView = UIView()
-            return eventDateView
+        let eventDateStack = {
+            let eventDateStack = UIStackView()
+            eventDateStack.axis = .vertical
+            return eventDateStack
         }()
             let eventDateLabel = {
                 let eventDateLabel = UILabel()
                 eventDateLabel.text = "Дата события"
+                
                 return eventDateLabel
+            }()
+            lazy var eventDateButton = {
+                let eventDateButton = UIButton()
+                eventDateButton.setTitle("30.09.2025", for: .normal)
+                eventDateButton.addTarget(self, action: #selector(eventDateButtonPressed), for: .touchUpInside)
+                return eventDateButton
             }()
             let eventDatePicker = {
                 let eventDatePicker = UIDatePicker()
+//                eventDatePicker.preferredDatePickerStyle = .compact
                 eventDatePicker.preferredDatePickerStyle = .inline
                 eventDatePicker.datePickerMode = .date
                 return eventDatePicker
             }()
     
-        let flexibleSpacer3 = {
-            let flexibleSpacer3 = UIView()
-            return flexibleSpacer3
-        }()
-
             let eventTypeView = {
                 let eventTypeView = UIView()
                 return eventTypeView
@@ -79,11 +77,11 @@ class EditViewController: UIViewController {
                     let eventTypeSegmentControll = UISegmentedControl()
                     return eventTypeSegmentControll
                 }()
-        let flexibleSpacer4 = {
-            let flexibleSpacer4 = UIView()
-            return flexibleSpacer4
+        let spacer2 = {
+            let spacer2 = UIView()
+            return spacer2
         }()
-    
+    // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,50 +89,49 @@ class EditViewController: UIViewController {
         addSubViews()
         setupConstraints()
         toPaintViews()
+        
+//        eventDateButton.addTarget(self, action: #selector(eventDateButtonPressed), for: .touchUpInside)
     }
     
     func addSubViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         
-        [flexibleSpacer1,
+        [spacer1,
          eventNameView,
-         flexibleSpacer2,
-         eventDateView,
-         flexibleSpacer3,
+         eventDateStack,
          eventTypeView,
-         flexibleSpacer4,].forEach { someView in
+         spacer2].forEach { someView in
             stackView.addArrangedSubview(someView)
         }
         
         eventNameView.addSubview(eventNameLabel)
         eventNameView.addSubview(eventNameTextField)
         
-        eventDateView.addSubview(eventDateLabel)
-        eventDateView.addSubview(eventDatePicker)
+        eventDateStack.addArrangedSubview(eventDateLabel)
+        eventDateStack.addArrangedSubview(eventDateButton)
+        eventDateStack.addArrangedSubview(eventDatePicker)
         
         eventTypeView.addSubview(eventTypeLabel)
         eventTypeView.addSubview(eventTypeSegmentControll)
-        
     }
     
     func setupConstraints() {
         
         [scrollView,
             stackView,
-                flexibleSpacer1,
+                spacer1,
                 eventNameView,
                     eventNameLabel,
                     eventNameTextField,
-                flexibleSpacer2,
-                eventDateView,
+                eventDateStack,
                     eventDateLabel,
+                    eventDateButton,
                     eventDatePicker,
-                flexibleSpacer3,
                 eventTypeView,
                     eventTypeLabel,
                     eventTypeSegmentControll,
-                flexibleSpacer4].forEach { someView in
+                spacer2,].forEach { someView in
                     someView.translatesAutoresizingMaskIntoConstraints = false
         }
         
@@ -150,13 +147,10 @@ class EditViewController: UIViewController {
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
             stackView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
             
-            flexibleSpacer1.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
-            flexibleSpacer2.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
-            flexibleSpacer3.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
-            flexibleSpacer4.heightAnchor.constraint(greaterThanOrEqualToConstant: 1),
-            flexibleSpacer1.heightAnchor.constraint(equalTo: flexibleSpacer2.heightAnchor),
-            flexibleSpacer2.heightAnchor.constraint(equalTo: flexibleSpacer3.heightAnchor),
-            flexibleSpacer3.heightAnchor.constraint(equalTo: flexibleSpacer4.heightAnchor),
+            
+            spacer1.heightAnchor.constraint(equalToConstant: 0),
+            spacer2.heightAnchor.constraint(equalToConstant: 0),
+            spacer1.heightAnchor.constraint(equalTo: spacer2.heightAnchor),
             
             eventNameLabel.topAnchor.constraint(equalTo: eventNameView.topAnchor),
             eventNameLabel.leadingAnchor.constraint(equalTo: eventNameView.leadingAnchor),
@@ -168,14 +162,19 @@ class EditViewController: UIViewController {
             eventNameTextField.bottomAnchor.constraint(equalTo: eventNameView.bottomAnchor),
             eventNameTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            eventDateLabel.topAnchor.constraint(equalTo: eventDateView.topAnchor),
-            eventDateLabel.leadingAnchor.constraint(equalTo: eventDateView.leadingAnchor),
-            eventDateLabel.trailingAnchor.constraint(equalTo: eventDateView.trailingAnchor),
+            eventDateLabel.topAnchor.constraint(equalTo: eventDateStack.topAnchor),
+            eventDateLabel.leadingAnchor.constraint(equalTo: eventDateStack.leadingAnchor),
+            eventDateLabel.trailingAnchor.constraint(equalTo: eventDateStack.trailingAnchor),
             
-            eventDatePicker.topAnchor.constraint(equalTo: eventDateLabel.bottomAnchor),
-            eventDatePicker.leadingAnchor.constraint(equalTo: eventDateView.leadingAnchor),
-            eventDatePicker.trailingAnchor.constraint(equalTo: eventDateView.trailingAnchor),
-            eventDatePicker.bottomAnchor.constraint(equalTo: eventDateView.bottomAnchor),
+            eventDateButton.topAnchor.constraint(equalTo: eventDateLabel.bottomAnchor),
+            eventDateButton.leadingAnchor.constraint(equalTo: eventDateStack.leadingAnchor),
+            eventDateButton.trailingAnchor.constraint(equalTo: eventDateStack.trailingAnchor),
+            eventDateButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            eventDatePicker.topAnchor.constraint(equalTo: eventDateButton.bottomAnchor),
+            eventDatePicker.leadingAnchor.constraint(equalTo: eventDateStack.leadingAnchor),
+            eventDatePicker.trailingAnchor.constraint(equalTo: eventDateStack.trailingAnchor),
+            eventDatePicker.bottomAnchor.constraint(equalTo: eventDateStack.bottomAnchor),
             eventDatePicker.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
             
             eventTypeLabel.topAnchor.constraint(equalTo: eventTypeView.topAnchor),
@@ -186,30 +185,34 @@ class EditViewController: UIViewController {
             eventTypeSegmentControll.leadingAnchor.constraint(equalTo: eventTypeView.leadingAnchor),
             eventTypeSegmentControll.trailingAnchor.constraint(equalTo: eventTypeView.trailingAnchor),
             eventTypeSegmentControll.bottomAnchor.constraint(equalTo: eventTypeView.bottomAnchor),
-            eventTypeSegmentControll.heightAnchor.constraint(equalToConstant: 50)
+            eventTypeSegmentControll.heightAnchor.constraint(equalToConstant: 50),
         ])
-        
     }
     
     func toPaintViews() {
         view.backgroundColor = .systemYellow
 //        scrollView.backgroundColor = .systemRed
 //        stackView.backgroundColor = .systemGreen
-//        flexibleSpacer1.backgroundColor = .systemBlue
+        spacer1.backgroundColor = .systemBlue
         eventNameView.backgroundColor = .systemOrange
         eventNameLabel.backgroundColor = .systemBrown
         eventNameTextField.backgroundColor = .systemPink
-//        flexibleSpacer2.backgroundColor = .systemPurple
-        eventDateView.backgroundColor = .systemTeal
-        eventDateLabel.backgroundColor = .systemIndigo
+        spacer2.backgroundColor = .systemPurple
+        eventDateStack.backgroundColor = .systemRed
+        eventDateLabel.backgroundColor = .systemGreen
+        eventDateButton.backgroundColor = .systemIndigo
         eventDatePicker.backgroundColor = .systemMint
-//        flexibleSpacer3.backgroundColor = .systemCyan
         eventTypeView.backgroundColor = .systemGray
         eventTypeLabel.backgroundColor = .systemRed
         eventTypeSegmentControll.backgroundColor = .systemGreen
-//        flexibleSpacer4.backgroundColor = .systemBlue
+        
     }
-    
+    @objc func eventDateButtonPressed() {
+        UIView.animate(withDuration: 0.25) {
+            self.eventDatePicker.isHidden.toggle()
+//            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 extension EditViewController: EditViewProtocol {
